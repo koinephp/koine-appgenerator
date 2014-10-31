@@ -1,9 +1,20 @@
 require 'rails/generators/rails/app/app_generator'
 require 'app_builder'
+require 'generators/helper'
 
 module Koine
   module Generators
     class AppGenerator < Rails::Generators::AppGenerator
+      include Helper
+
+      def self.templates_path=(path)
+        @@templates_path = path
+      end
+
+      def self.templates_path
+        @@templates_path
+      end
+
       class_option :database,
         type: :string,
         aliases: '-d',
@@ -55,6 +66,8 @@ module Koine
 end
 
 templates_path = File.expand_path('../../../templates', __FILE__)
+
 Koine::Generators::AppGenerator.source_paths << Rails::Generators::AppGenerator.source_root
 Koine::Generators::AppGenerator.source_paths << templates_path
+Koine::Generators::AppGenerator.templates_path = templates_path
 

@@ -46,8 +46,11 @@ module Koine
           /gem "spring-commands-rspec"/,
         )
 
-        assert_file('MyApp/spec/rails_helper.rb', /Coveralls/)
+        assert_file('MyApp/.rspec')
+        assert_file('MyApp/spec/rails_helper.rb')
+        assert_file('MyApp/spec/spec_helper.rb')
         assert_file('MyApp/spec/support/blueprints.rb')
+        # assert_file('MyApp/spec/rails_helper.rb', /Coveralls/)
       end
 
       test "configures generators" do

@@ -4,8 +4,8 @@ module Koine
 
     def install_rspec
       say "installing rspec"
-      template 'spec/rails_helper.rb', 'spec/rails_helper.rb', force: true
-      template 'spec/support/blueprints.rb', 'spec/support/blueprints.rb'
+      template_dir('spec')
+      template '.rspec'
     end
 
     def configure_generators
