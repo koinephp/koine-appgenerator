@@ -9,6 +9,7 @@ env:
   - DB=mysql
   - DB=postgresql
 script:
+  - rails --version
   - rake
 before_script:
   - mysql -e 'create database MyApp_test'

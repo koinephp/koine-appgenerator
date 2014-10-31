@@ -7,4 +7,3 @@ module Koine
     end
   end
 end
-

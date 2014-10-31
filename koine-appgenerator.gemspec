@@ -1,12 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path('../lib', __FILE__)
 
-require 'koine-app_generator'
+require 'generators/version'
 
 Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.2'
-  s.add_dependency 'bundler', '~> 1.6'
-  s.add_dependency("railties", ">= 4.1", "< 5")
   s.add_dependency("rails", ">= 4.1", "< 5")
   s.authors = ['Marcelo Jacobus']
   s.email = 'marcelo.jacobus@gmail.com'
