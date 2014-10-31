@@ -1,16 +1,25 @@
 ENV["RAILS_ENV"] = "test"
 
-# require 'simplecov'
-# SimpleCov.start
+# for some reason it raises in travis env
+begin
+  require 'simplecov'
+  SimpleCov.start
+rescue LoadError
+end
 
 $:.unshift File.dirname(__FILE__)
 $:.unshift File.dirname(__FILE__) + '/../lib'
 
 require 'minitest/autorun'
-require "minitest/reporters"
-# Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
-# Minitest::Reporters.use! Minitest::Reporters::RspecReporter.new
-Minitest::Reporters.use!
+
+# for some reason it raises in travis env
+begin
+  require "minitest/reporters"
+  # Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
+  # Minitest::Reporters.use! Minitest::Reporters::RspecReporter.new
+  Minitest::Reporters.use!
+rescue LoadError
+end
 
 # require 'mocha/setup'
 
