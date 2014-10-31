@@ -97,6 +97,8 @@ SimpleCov.start 'rails'
 
 RUBY
       end
+
+      run "echo coveralls >> .gitignore"
     end
   end
 end
