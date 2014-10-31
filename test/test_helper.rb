@@ -2,8 +2,11 @@ ENV["RAILS_ENV"] = "test"
 
 # for some reason it raises in travis env
 begin
-  require 'simplecov'
-  SimpleCov.start
+  # require 'simplecov'
+  # SimpleCov.start
+
+  require 'coveralls'
+  Coveralls.wear!
 rescue LoadError
 end
 
