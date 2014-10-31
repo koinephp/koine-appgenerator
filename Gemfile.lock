@@ -94,5 +94,6 @@ PLATFORMS
 
 DEPENDENCIES
   koine-appgenerator!
+  minitest
   minitest-reporters
   simplecov (~> 0.7.1)
