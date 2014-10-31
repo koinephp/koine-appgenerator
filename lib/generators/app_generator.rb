@@ -43,6 +43,12 @@ module Koine
       def get_builder_class
         AppBuilder
       end
+
+      def copy_files
+        build :readme
+        # build :coveralls
+        build :travis
+      end
     end
   end
 end

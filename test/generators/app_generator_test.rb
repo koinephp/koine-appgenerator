@@ -75,6 +75,15 @@ module Koine
           /generate.test_framework :rspec/
         )
       end
+
+      test "copy files" do
+        run_generator
+
+        assert_no_file "MyApp/README.rdoc"
+        assert_file "MyApp/README.md", /MyApp/
+        assert_file "MyApp/.travis.yml", /MyApp_test/
+        # assert_file "MyApp/.coveralls.yml"
+      end
     end
   end
 end

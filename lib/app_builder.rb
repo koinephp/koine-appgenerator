@@ -100,5 +100,17 @@ RUBY
 
       run "echo coveralls >> .gitignore"
     end
+
+    def travis
+      template '.travis.yml.erb', '.travis.yml'
+    end
+
+    def coveralls
+      template '.coveralls.yml'
+    end
+
+    def readme
+      template 'README.md.erb', 'README.md'
+    end
   end
 end
