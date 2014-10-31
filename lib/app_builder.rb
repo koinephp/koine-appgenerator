@@ -36,6 +36,7 @@ RUBY
     end
 
     def configure_rspec
+      configure_coverage
       require_test_gems
 
       inject_into_file 'spec/rails_helper.rb', after: /^end$/ do <<-RUBY
@@ -85,6 +86,17 @@ RUBY
       RUBY
 
       inject_into_class 'config/application.rb', 'Application', config
+    end
+
+    def configure_coverage
+      first_line = 'ENV["RAILS_ENV"]'
+      inject_into_file 'spec/rails_helper.rb', before: first_line do <<-RUBY
+
+require 'simplecov'
+SimpleCov.start 'rails'
+
+RUBY
+      end
     end
   end
 end

@@ -54,6 +54,7 @@ module Koine
         assert_file('MyApp/spec/rails_helper.rb', /require 'capybara\/rspec'/)
 
         assert_file('MyApp/spec/rails_helper.rb', /Capybara/)
+        assert_file('MyApp/spec/rails_helper.rb', /start 'rails'/)
       end
 
       test "configures generators" do
