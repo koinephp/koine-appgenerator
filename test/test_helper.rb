@@ -1,5 +1,8 @@
 ENV["RAILS_ENV"] = "test"
 
+require 'simplecov'
+SimpleCov.start
+
 $:.unshift File.dirname(__FILE__)
 $:.unshift File.dirname(__FILE__) + '/../lib'
 
