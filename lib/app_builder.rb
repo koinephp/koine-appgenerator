@@ -4,6 +4,21 @@ module Koine
 
     def install_rspec
       say "installing rspec"
+        gem_group(:test) do
+          gem 'rspec-rails', '~> 3.1.0'
+          gem 'coveralls', require: false
+          gem 'simplecov', require: false
+          gem 'capybara'
+          # gem 'capybara-webkit', '>= 1.0.0'
+          gem 'database_cleaner'
+          # gem 'launchy'
+          gem 'shoulda-matchers', require: false
+          gem 'simplecov', require: false
+          gem 'timecop'
+          gem 'webmock'
+          gem 'machinist'
+          gem 'spring-commands-rspec'
+        end
       template_dir('spec')
       template '.rspec'
 
