@@ -28,7 +28,7 @@ koine-appgenerator is a custom rails app generator
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.version = Koine::Generators::VERSION
 
-  s.add_development_dependency 'rspec'
   s.add_development_dependency 'simplecov', '~> 0.7.1'
-  s.add_development_dependency 'capybara'
+  # s.add_development_dependency 'capybara'
+  s.add_development_dependency 'minitest-reporters'
 end

@@ -4,6 +4,11 @@ $:.unshift File.dirname(__FILE__)
 $:.unshift File.dirname(__FILE__) + '/../lib'
 
 require 'minitest/autorun'
+require "minitest/reporters"
+# Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
+# Minitest::Reporters.use! Minitest::Reporters::RspecReporter.new
+Minitest::Reporters.use!
+
 # require 'mocha/setup'
 
 APP_FOLDER = File.expand_path("../tmp", File.dirname(__FILE__))

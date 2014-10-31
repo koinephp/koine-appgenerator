@@ -6,15 +6,15 @@ module Koine
       destination APP_FOLDER
       tests AppGenerator
       setup :prepare_destination
-      arguments ['root']
+      arguments ['MyApp']
 
       test "generates assets" do
         run_generator
 
-        assert_file("root/app/views/layouts/application.html.erb", /stylesheet_link_tag\s+'application', media: 'all', 'data-turbolinks-track' => true/)
-        assert_file("root/app/views/layouts/application.html.erb", /javascript_include_tag\s+'application', 'data-turbolinks-track' => true/)
-        assert_file("root/app/assets/stylesheets/application.css")
-        assert_file("root/app/assets/javascripts/application.js")
+        assert_file("MyApp/app/views/layouts/application.html.erb", /stylesheet_link_tag\s+'application', media: 'all', 'data-turbolinks-track' => true/)
+        assert_file("MyApp/app/views/layouts/application.html.erb", /javascript_include_tag\s+'application', 'data-turbolinks-track' => true/)
+        assert_file("MyApp/app/assets/stylesheets/application.css")
+        assert_file("MyApp/app/assets/javascripts/application.js")
       end
     end
   end

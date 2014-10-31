@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+  - 2.1.1
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+script:
+  - rake
+before_script:
+  - mysql -e 'create database MyApp_test'
+  - psql -c 'create database  MyApp_test' -U postgres
+notifications:
+  email:
+    on_success: change
+    on_failure: always
