@@ -8,9 +8,6 @@ env:
   - DB=sqlite
   - DB=mysql
   - DB=postgresql
-script:
-  # - rake
-  - ruby test/*/*
 before_script:
   - mysql -e 'create database MyApp_test'
   - psql -c 'create database  MyApp_test' -U postgres
