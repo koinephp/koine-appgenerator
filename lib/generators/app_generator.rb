@@ -53,6 +53,10 @@ module Koine
       def disable_turbolinks
         build(:disable_turbolinks)
       end
+
+      def add_high_voltage
+        gem 'high_voltage', '~> 2.2.1'
+      end
     end
   end
 end

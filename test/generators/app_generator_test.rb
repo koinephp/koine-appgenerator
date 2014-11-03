@@ -93,6 +93,12 @@ module Koine
         assert_not_in_file 'turbolinks',  'MyApp/app/assets/javascripts/application.js'
         assert_not_in_file 'turbolinks',  'MyApp/Gemfile'
       end
+
+      test "adds high voltage gem" do
+        run_generator
+
+        assert_gem 'high_voltage', '~> 2.2.1'
+      end
     end
   end
 end

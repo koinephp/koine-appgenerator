@@ -30,4 +30,12 @@ module TestHelper
     absolute = File.expand_path(file, destination_root)
     assert !File.read(absolute).match(content), "Failed asserting that file #{absolute} does not contain #{content}"
   end
+
+  def assert_gem(gemname, version = nil)
+    if version
+      assert_file 'MyApp/Gemfile', /gem "#{gemname}", "#{version}"/
+    else
+      assert_file 'MyApp/Gemfile', /gem "#{gemname}"/
+    end
+  end
 end
