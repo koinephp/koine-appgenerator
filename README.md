@@ -11,9 +11,7 @@ A custom rails generatator
 
 ## Instalation
 
-Add this line to your application's Gemfile:
-
-    gem 'koine-appgenerator'
+    gem install 'koine-appgenerator'
 
 ## Usage
     koine-appgenerator MyApp
