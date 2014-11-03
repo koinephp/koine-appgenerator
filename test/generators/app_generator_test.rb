@@ -99,6 +99,16 @@ module Koine
 
         assert_gem 'high_voltage', '~> 2.2.1'
       end
+
+      test "sets home page" do
+        run_generator
+
+        assert_file "MyApp/app/views/pages/home.html.erb", /Hello World!/
+        assert_file "MyApp/app/controllers/pages_controller.rb"
+        assert_file "MyApp/spec/controllers/pages_controller_spec.rb"
+
+        assert_file 'MyApp/config/routes.rb', /root to: "pages#show", id: "home"/
+      end
     end
   end
 end

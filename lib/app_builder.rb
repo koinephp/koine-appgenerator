@@ -118,5 +118,16 @@ RUBY
         ''
       replace_in_file 'Gemfile', /^.*turbolinks.*$/, ''
     end
+
+    def set_home_page
+      template_dir "app/views/pages"
+      template "app/controllers/pages_controller.rb"
+
+      unless options[:skip_rspec]
+        template "spec/controllers/pages_controller_spec.rb" 
+      end
+
+      route 'root to: "pages#show", id: "home"'
+    end
   end
 end

@@ -57,6 +57,10 @@ module Koine
       def add_high_voltage
         gem 'high_voltage', '~> 2.2.1'
       end
+
+      def set_home_page
+        build :set_home_page
+      end
     end
   end
 end

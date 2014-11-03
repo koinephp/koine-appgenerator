@@ -6,9 +6,9 @@ module Koine
         base = self.class.templates_path + "/"
         Dir[base + "#{directory}/**/*"].each do |file|
           unless File.directory?(file)
-            file = file.gsub(base, "")
-            source      = file.gsub(/\.erb$/, '')
-            destination = file
+            file        = file.gsub(base, "")
+            source      = file
+            destination = file.gsub(/\.erb$/, '')
             template(source, destination, options)
           end
         end
