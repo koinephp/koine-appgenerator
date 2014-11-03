@@ -1,4 +1,3 @@
-
 module Koine
   class AppBuilder < Rails::AppBuilder
 
@@ -111,6 +110,13 @@ RUBY
 
     def readme
       template 'README.md.erb', 'README.md'
+    end
+
+    def disable_turbolinks
+      replace_in_file 'app/assets/javascripts/application.js',
+        /\/\/= require turbolinks\n/,
+        ''
+      replace_in_file 'Gemfile', /^.*turbolinks.*$/, ''
     end
   end
 end

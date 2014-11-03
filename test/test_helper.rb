@@ -22,3 +22,12 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 # For generators
 require "rails/generators/test_case"
 require "koine-app_generator"
+
+module TestHelper
+  def assert_not_in_file(content, file)
+    assert_file file
+
+    absolute = File.expand_path(file, destination_root)
+    assert !File.read(absolute).match(content), "Failed asserting that file #{absolute} does not contain #{content}"
+  end
+end

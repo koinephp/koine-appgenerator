@@ -49,6 +49,10 @@ module Koine
         # build :coveralls
         build :travis
       end
+
+      def disable_turbolinks
+        build(:disable_turbolinks)
+      end
     end
   end
 end

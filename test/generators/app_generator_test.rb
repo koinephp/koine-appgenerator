@@ -3,6 +3,8 @@ require_relative '../test_helper'
 module Koine
   module Generators
     class AppGeneratorTest < Rails::Generators::TestCase
+      include TestHelper
+
       destination APP_FOLDER
       tests AppGenerator
       setup :prepare_destination
@@ -83,6 +85,13 @@ module Koine
         assert_file "MyApp/README.md", /MyApp/
         assert_file "MyApp/.travis.yml", /MyApp_test/
         # assert_file "MyApp/.coveralls.yml"
+      end
+
+      test "removes turbolink" do
+        run_generator
+
+        assert_not_in_file 'turbolinks',  'MyApp/app/assets/javascripts/application.js'
+        assert_not_in_file 'turbolinks',  'MyApp/Gemfile'
       end
     end
   end
