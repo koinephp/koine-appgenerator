@@ -109,6 +109,12 @@ module Koine
 
         assert_file 'MyApp/config/routes.rb', /root to: "pages#show", id: "home"/
       end
+
+      test "removes routes comment" do
+        run_generator
+
+        assert_not_in_file "# ", 'MyApp/config/routes.rb'
+      end
     end
   end
 end

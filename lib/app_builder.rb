@@ -1,7 +1,7 @@
 module Koine
   class AppBuilder < Rails::AppBuilder
 
-    def install_rspec
+    def set_up_test_environment
       say "installing rspec"
         gem_group(:test) do
           gem 'rspec-rails', '~> 3.1.0'
@@ -128,6 +128,12 @@ RUBY
       end
 
       route 'root to: "pages#show", id: "home"'
+    end
+
+    def remove_comments_from_routes_file
+      replace_in_file 'config/routes.rb',
+        /.draw do.*end/m,
+        ".draw do\nend"
     end
   end
 end

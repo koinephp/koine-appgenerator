@@ -32,16 +32,31 @@ module Koine
         default: false,
         desc: 'Skip rspec installation'
 
-      def install_rspec
-        build :install_rspec unless options[:skip_rspec]
+      def finish_template
+        invoke :koine_customizations
+        super
+      end
+
+      def koine_customizations
+        invoke :remove_comments_from_routes_file
+        invoke :configure_generators
+        invoke :disable_turbolinks
+        invoke :add_high_voltage
+        invoke :set_home_page
+        invoke :copy_files
+        invoke :set_up_test_environment
+      end
+
+      def set_up_test_environment
+        build :set_up_test_environment unless options[:skip_rspec]
+      end
+
+      def remove_comments_from_routes_file
+        build :remove_comments_from_routes_file
       end
 
       def configure_generators
         build :configure_generators
-      end
-
-      def get_builder_class
-        AppBuilder
       end
 
       def copy_files
@@ -60,6 +75,12 @@ module Koine
 
       def set_home_page
         build :set_home_page
+      end
+
+      protected
+
+      def get_builder_class
+        AppBuilder
       end
     end
   end
