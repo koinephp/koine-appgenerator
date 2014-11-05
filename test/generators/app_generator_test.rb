@@ -124,6 +124,16 @@ module Koine
         assert_file 'MyApp/config/smtp.yml.dist'
         assert_file 'MyApp/.gitignore', /config\/smtp.yml/
       end
+
+      test "configures action mail host" do
+        run_generator
+        app_name = 'MyApp'
+
+        assert_file 'MyApp/config/environments/development.rb', /#{app_name}\.local/
+        assert_file 'MyApp/config/environments/test.rb', /www\.example\.com/
+        # assert_file 'MyApp/config/environments/stating.rb', /staging\.#{app_name}\.com/
+        assert_file 'MyApp/config/environments/production.rb', /#{app_name}\.com/
+      end
     end
   end
 end

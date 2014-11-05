@@ -142,5 +142,12 @@ RUBY
       template 'config/smtp.yml.erb', 'config/smtp.yml.dist'
       git_ignore 'config/smtp.yml'
     end
+
+    def configure_action_mailer
+      action_mailer_host 'development', "#{app_name}.local"
+      action_mailer_host 'test', 'www.example.com'
+      # action_mailer_host 'staging', "staging.#{app_name}.com"
+      action_mailer_host 'production', "#{app_name}.com"
+    end
   end
 end

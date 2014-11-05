@@ -46,6 +46,7 @@ module Koine
         invoke :copy_files
         invoke :set_up_test_environment
         invoke :set_up_smtp
+        invoke :configure_action_mailer
       end
 
       def set_up_test_environment
@@ -80,6 +81,10 @@ module Koine
 
       def set_up_smtp
         build :set_up_smtp
+      end
+
+      def configure_action_mailer
+        build :configure_action_mailer
       end
 
       protected
