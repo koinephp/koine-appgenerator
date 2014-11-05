@@ -124,7 +124,7 @@ RUBY
       template "app/controllers/pages_controller.rb"
 
       unless options[:skip_rspec]
-        template "spec/controllers/pages_controller_spec.rb" 
+        template "spec/controllers/pages_controller_spec.rb"
       end
 
       route 'root to: "pages#show", id: "home"'
@@ -146,8 +146,13 @@ RUBY
     def configure_action_mailer
       action_mailer_host 'development', "#{app_name}.local"
       action_mailer_host 'test', 'www.example.com'
-      # action_mailer_host 'staging', "staging.#{app_name}.com"
+      action_mailer_host 'staging', "staging.#{app_name}.com"
       action_mailer_host 'production', "#{app_name}.com"
+    end
+
+    def setup_staging_environment
+      template 'config/environments/staging.rb.erb',
+        'config/environments/staging.rb'
     end
   end
 end

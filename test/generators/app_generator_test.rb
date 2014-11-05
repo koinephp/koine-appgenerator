@@ -131,8 +131,14 @@ module Koine
 
         assert_file 'MyApp/config/environments/development.rb', /#{app_name}\.local/
         assert_file 'MyApp/config/environments/test.rb', /www\.example\.com/
-        # assert_file 'MyApp/config/environments/stating.rb', /staging\.#{app_name}\.com/
+        assert_file 'MyApp/config/environments/staging.rb', /staging\.#{app_name}\.com/
         assert_file 'MyApp/config/environments/production.rb', /#{app_name}\.com/
+      end
+
+      test "configures staging environment" do
+        run_generator
+
+        assert_file 'MyApp/config/environments/staging.rb', /MyApp::Application.configure do/
       end
     end
   end

@@ -44,6 +44,7 @@ module Koine
         invoke :add_high_voltage
         invoke :set_home_page
         invoke :copy_files
+        invoke :set_up_staging_environment
         invoke :set_up_test_environment
         invoke :set_up_smtp
         invoke :configure_action_mailer
@@ -51,6 +52,10 @@ module Koine
 
       def set_up_test_environment
         build :set_up_test_environment unless options[:skip_rspec]
+      end
+
+      def set_up_staging_environment
+        build :setup_staging_environment
       end
 
       def remove_comments_from_routes_file
