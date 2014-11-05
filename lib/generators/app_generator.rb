@@ -45,6 +45,7 @@ module Koine
         invoke :set_home_page
         invoke :copy_files
         invoke :set_up_test_environment
+        invoke :set_up_smtp
       end
 
       def set_up_test_environment
@@ -75,6 +76,10 @@ module Koine
 
       def set_home_page
         build :set_home_page
+      end
+
+      def set_up_smtp
+        build :set_up_smtp
       end
 
       protected

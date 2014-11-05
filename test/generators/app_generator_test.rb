@@ -115,6 +115,15 @@ module Koine
 
         assert_not_in_file "# ", 'MyApp/config/routes.rb'
       end
+
+      test "configures smtp" do
+        run_generator
+
+        assert_file 'MyApp/config/initializers/smtp_initializer.rb'
+        assert_file 'MyApp/config/smtp.yml'
+        assert_file 'MyApp/config/smtp.yml.dist'
+        assert_file 'MyApp/.gitignore', /config\/smtp.yml/
+      end
     end
   end
 end

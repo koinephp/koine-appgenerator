@@ -135,5 +135,12 @@ RUBY
         /.draw do.*end/m,
         ".draw do\nend"
     end
+
+    def set_up_smtp
+      template 'config/initializers/smtp_initializer.rb'
+      template 'config/smtp.yml.erb', 'config/smtp.yml'
+      template 'config/smtp.yml.erb', 'config/smtp.yml.dist'
+      git_ignore 'config/smtp.yml'
+    end
   end
 end

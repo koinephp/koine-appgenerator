@@ -45,6 +45,10 @@ module Koine
         path = File.join(destination_root, destination)
         File.open(path, "w") { |file| file.write(contents) }
       end
+
+      def git_ignore(file)
+        run "echo #{file} >> .gitignore"
+      end
     end
   end
 end
