@@ -140,6 +140,12 @@ module Koine
 
         assert_file 'MyApp/config/environments/staging.rb', /MyApp::Application.configure do/
       end
+
+      test "installs draper gem" do
+        run_generator
+
+        assert_gem 'draper', '~> 1.3'
+      end
     end
   end
 end

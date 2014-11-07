@@ -43,6 +43,7 @@ module Koine
         invoke :disable_turbolinks
         invoke :add_high_voltage
         invoke :set_home_page
+        invoke :install_draper
         invoke :copy_files
         invoke :set_up_staging_environment
         invoke :set_up_test_environment
@@ -90,6 +91,10 @@ module Koine
 
       def configure_action_mailer
         build :configure_action_mailer
+      end
+
+      def install_draper
+        gem 'draper', '~> 1.3'
       end
 
       protected
