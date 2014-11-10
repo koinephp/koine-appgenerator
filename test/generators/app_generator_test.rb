@@ -159,6 +159,14 @@ module Koine
         assert_file 'MyApp/config/environments/development.rb', /action_on_unpermitted_parameters = :raise/
         assert_file 'MyApp/config/environments/test.rb', /action_on_unpermitted_parameters = :raise/
       end
+
+      test "customizes error pages" do
+        run_generator
+
+        assert_file 'MyApp/public/404.html', /ROBOTS/, /NOODP/
+        assert_file 'MyApp/public/422.html', /ROBOTS/, /NOODP/
+        assert_file 'MyApp/public/500.html', /ROBOTS/, /NOODP/
+      end
     end
   end
 end

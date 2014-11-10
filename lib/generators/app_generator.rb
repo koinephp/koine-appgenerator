@@ -49,6 +49,7 @@ module Koine
         invoke :set_up_test_environment
         invoke :set_up_smtp
         invoke :configure_action_mailer
+        invoke :customize_error_pages
       end
 
       def set_up_test_environment
@@ -97,6 +98,10 @@ module Koine
 
       def install_draper
         gem 'draper', '~> 1.3'
+      end
+
+      def customize_error_pages
+        build :customize_error_pages
       end
 
       protected

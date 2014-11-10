@@ -182,5 +182,17 @@ RUBY
         before: "\nend"
       )
     end
+
+    def customize_error_pages
+      meta_tags =<<-EOS
+  <meta charset='utf-8' />
+  <meta name='ROBOTS' content='NOODP' />
+      EOS
+
+      %w(500 404 422).each do |page|
+        inject_into_file "public/#{page}.html", meta_tags, :after => "<head>\n"
+        replace_in_file "public/#{page}.html", /<!--.+-->\n/, ''
+      end
+    end
   end
 end
