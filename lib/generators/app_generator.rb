@@ -50,6 +50,7 @@ module Koine
         invoke :set_up_smtp
         invoke :configure_action_mailer
         invoke :customize_error_pages
+        invoke :configure_time_zone
       end
 
       def set_up_test_environment
@@ -102,6 +103,10 @@ module Koine
 
       def customize_error_pages
         build :customize_error_pages
+      end
+
+      def configure_time_zone
+        build :configure_time_zone
       end
 
       protected

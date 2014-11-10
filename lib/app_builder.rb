@@ -166,6 +166,15 @@ RUBY
       raise_on_unpermitted_params_on('test')
     end
 
+    def configure_time_zone
+      config = <<-RUBY
+    config.active_record.default_timezone = :utc
+
+RUBY
+
+      inject_into_class 'config/application.rb', 'Application', config
+    end
+
     def raise_on_unpermitted_params_on(environment)
       action_on_unpermitted_parameters = <<-RUBY
 

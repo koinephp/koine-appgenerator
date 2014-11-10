@@ -167,6 +167,12 @@ module Koine
         assert_file 'MyApp/public/422.html', /ROBOTS/, /NOODP/
         assert_file 'MyApp/public/500.html', /ROBOTS/, /NOODP/
       end
+
+      test "configure timezones" do
+        run_generator
+
+        assert_file 'MyApp/config/application.rb', /config.active_record.default_timezone = :utc/
+      end
     end
   end
 end
