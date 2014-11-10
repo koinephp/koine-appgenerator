@@ -39,7 +39,6 @@ module Koine
 
       def koine_customizations
         invoke :remove_comments_from_routes_file
-        invoke :configure_generators
         invoke :disable_turbolinks
         invoke :add_high_voltage
         invoke :set_home_page
@@ -58,6 +57,8 @@ module Koine
 
       def set_up_development_environment
         build :raise_on_delivery_errors
+        build :raise_on_unpermitted_params
+        build :configure_generators
       end
 
       def set_up_staging_environment
@@ -66,10 +67,6 @@ module Koine
 
       def remove_comments_from_routes_file
         build :remove_comments_from_routes_file
-      end
-
-      def configure_generators
-        build :configure_generators
       end
 
       def copy_files

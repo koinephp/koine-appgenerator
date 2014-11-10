@@ -156,13 +156,31 @@ RUBY
     end
 
     def raise_on_delivery_errors
-      raise_delivery_errors('development')
-    end
-
-    def raise_delivery_errors(env)
-      replace_in_file "config/environments/#{env}.rb",
+      replace_in_file 'config/environments/development.rb',
         'raise_delivery_errors = false',
         'raise_delivery_errors = true'
+    end
+
+    def raise_on_unpermitted_params
+      raise_on_unpermitted_params_on('development')
+      raise_on_unpermitted_params_on('test')
+    end
+
+    def raise_on_unpermitted_params_on(environment)
+      action_on_unpermitted_parameters = <<-RUBY
+
+
+  # Raise an ActionController::UnpermittedParameters exception when
+  # a parameter is not explcitly permitted but is passed anyway.
+  config.action_controller.action_on_unpermitted_parameters = :raise
+
+RUBY
+
+      inject_into_file(
+        "config/environments/#{environment}.rb",
+        action_on_unpermitted_parameters,
+        before: "\nend"
+      )
     end
   end
 end

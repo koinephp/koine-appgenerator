@@ -152,6 +152,13 @@ module Koine
 
         assert_file 'MyApp/config/environments/development.rb', /raise_delivery_errors = true/
       end
+
+      test "raises on unpermitted params in test and development environments" do
+        run_generator
+
+        assert_file 'MyApp/config/environments/development.rb', /action_on_unpermitted_parameters = :raise/
+        assert_file 'MyApp/config/environments/test.rb', /action_on_unpermitted_parameters = :raise/
+      end
     end
   end
 end
