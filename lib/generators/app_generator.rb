@@ -51,6 +51,11 @@ module Koine
         invoke :configure_action_mailer
         invoke :customize_error_pages
         invoke :configure_time_zone
+        invoke :copy_locale_files
+      end
+
+      def copy_locale_files
+        build :copy_locale_files
       end
 
       def set_up_test_environment

@@ -203,5 +203,11 @@ RUBY
         replace_in_file "public/#{page}.html", /<!--.+-->\n/, ''
       end
     end
+
+    def copy_locale_files
+      remove_file 'config/locales/en.yml'
+
+      copy_dir 'config/locales'
+    end
   end
 end

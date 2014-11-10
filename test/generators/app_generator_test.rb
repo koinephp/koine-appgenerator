@@ -168,10 +168,20 @@ module Koine
         assert_file 'MyApp/public/500.html', /ROBOTS/, /NOODP/
       end
 
-      test "configure timezones" do
+      test "configure default time zone" do
         run_generator
 
         assert_file 'MyApp/config/application.rb', /config.active_record.default_timezone = :utc/
+      end
+
+      test "copies the localization files" do
+        run_generator
+
+        assert_file 'MyApp/config/locales/en.yml', /with_weekday/
+        assert_file 'MyApp/config/locales/pt-BR.yml'
+        assert_file 'MyApp/config/locales/devise.en.yml'
+        assert_file 'MyApp/config/locales/devise.pt-BR.yml'
+        assert_file 'MyApp/config/locales/system.pt-BR.yml'
       end
     end
   end

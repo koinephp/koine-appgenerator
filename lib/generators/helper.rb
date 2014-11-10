@@ -2,7 +2,19 @@ module Koine
   module Generators
     module Helper
 
-      def template_dir(directory, opitons = {})
+      def copy_dir(directory, options = {})
+        base = self.class.templates_path + "/"
+        Dir[base + "#{directory}/**/*"].each do |file|
+          unless File.directory?(file)
+            file        = file.gsub(base, "")
+            source      = file
+            destination = file.gsub(/\.erb$/, '')
+            copy_file(source, destination, options)
+          end
+        end
+      end
+
+      def template_dir(directory, options = {})
         base = self.class.templates_path + "/"
         Dir[base + "#{directory}/**/*"].each do |file|
           unless File.directory?(file)
