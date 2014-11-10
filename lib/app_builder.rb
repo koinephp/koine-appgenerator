@@ -154,5 +154,15 @@ RUBY
       template 'config/environments/staging.rb.erb',
         'config/environments/staging.rb'
     end
+
+    def raise_on_delivery_errors
+      raise_delivery_errors('development')
+    end
+
+    def raise_delivery_errors(env)
+      replace_in_file "config/environments/#{env}.rb",
+        'raise_delivery_errors = false',
+        'raise_delivery_errors = true'
+    end
   end
 end

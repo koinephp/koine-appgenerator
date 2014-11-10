@@ -146,6 +146,12 @@ module Koine
 
         assert_gem 'draper', '~> 1.3'
       end
+
+      test "raises delivery errors on development" do
+        run_generator
+
+        assert_file 'MyApp/config/environments/development.rb', /raise_delivery_errors = true/
+      end
     end
   end
 end

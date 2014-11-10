@@ -45,6 +45,7 @@ module Koine
         invoke :set_home_page
         invoke :install_draper
         invoke :copy_files
+        invoke :set_up_development_environment
         invoke :set_up_staging_environment
         invoke :set_up_test_environment
         invoke :set_up_smtp
@@ -53,6 +54,10 @@ module Koine
 
       def set_up_test_environment
         build :set_up_test_environment unless options[:skip_rspec]
+      end
+
+      def set_up_development_environment
+        build :raise_on_delivery_errors
       end
 
       def set_up_staging_environment
