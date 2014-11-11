@@ -52,6 +52,7 @@ module Koine
         invoke :customize_error_pages
         invoke :configure_time_zone
         invoke :copy_locale_files
+        invoke :install_zurb_foundation
       end
 
       def copy_locale_files
@@ -112,6 +113,13 @@ module Koine
 
       def configure_time_zone
         build :configure_time_zone
+      end
+
+      def install_zurb_foundation
+        say "Installing zourb foundation"
+        gem 'foundation-rails'
+
+        build :install_zurb_fundation
       end
 
       protected

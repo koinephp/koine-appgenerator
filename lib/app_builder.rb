@@ -209,5 +209,26 @@ RUBY
 
       copy_dir 'config/locales'
     end
+
+    def install_zurb_fundation
+      # zurb css
+      template_file = 'app/assets/stylesheets/application.css.scss.erb'
+      file          = template_file.gsub('.erb', '')
+      remove_file file.gsub('.scss', '')
+
+      copy_file template_file, file
+
+      # zurb js
+      template_file = 'app/assets/javascripts/application.js.erb'
+      file          = template_file.gsub('.erb', '')
+      remove_file file.gsub('.scss', '')
+
+      copy_file template_file, file
+
+      # application layout
+      template 'app/views/layouts/application.html.erb.erb',
+        'app/views/layouts/application.html.erb',
+        force: true
+    end
   end
 end

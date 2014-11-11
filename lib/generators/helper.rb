@@ -61,6 +61,12 @@ module Koine
       def git_ignore(file)
         run "echo #{file} >> .gitignore"
       end
+
+      def rename_file(source, destination)
+        return if source == destination
+        copy_file source, destination
+        remove_file source
+      end
     end
   end
 end

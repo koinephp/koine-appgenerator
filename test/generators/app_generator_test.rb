@@ -13,9 +13,9 @@ module Koine
       test "generates assets" do
         run_generator
 
-        assert_file("MyApp/app/views/layouts/application.html.erb", /stylesheet_link_tag\s+'application', media: 'all', 'data-turbolinks-track' => true/)
-        assert_file("MyApp/app/views/layouts/application.html.erb", /javascript_include_tag\s+'application', 'data-turbolinks-track' => true/)
-        assert_file("MyApp/app/assets/stylesheets/application.css")
+        assert_file("MyApp/app/views/layouts/application.html.erb")
+        assert_no_file("MyApp/app/assets/stylesheets/application.css")
+        assert_file("MyApp/app/assets/stylesheets/application.css.scss")
         assert_file("MyApp/app/assets/javascripts/application.js")
       end
 
@@ -182,6 +182,22 @@ module Koine
         assert_file 'MyApp/config/locales/devise.en.yml'
         assert_file 'MyApp/config/locales/devise.pt-BR.yml'
         assert_file 'MyApp/config/locales/system.pt-BR.yml'
+      end
+
+      test "installs zurb foundation" do
+        run_generator
+
+        assert_gem 'foundation-rails'
+        assert_file 'MyApp/app/assets/stylesheets/application.css.scss',
+          /= require foundation/,
+          /@import "foundation_and_overrides";/
+
+        assert_file 'MyApp/app/assets/javascripts/application.js',
+          /\$\(document\).foundation\(\);/
+
+        assert_file 'MyApp/app/views/layouts/application.html.erb',
+          /javascript_include_tag "vendor\/modernizr"/,
+          /<meta name="viewport" content="width=device-width, initial-scale=1.0" \/>/
       end
     end
   end
