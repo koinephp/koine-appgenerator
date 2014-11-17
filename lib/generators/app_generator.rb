@@ -52,7 +52,12 @@ module Koine
         invoke :customize_error_pages
         invoke :configure_time_zone
         invoke :copy_locale_files
+        invoke :set_up_assets
         invoke :install_zurb_foundation
+      end
+
+      def set_up_assets
+        build :set_up_assets
       end
 
       def copy_locale_files

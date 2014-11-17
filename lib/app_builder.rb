@@ -211,24 +211,28 @@ RUBY
     end
 
     def install_zurb_fundation
-      # zurb css
+      generate "foundation:install"
+
+      # application layout
+      template 'app/views/layouts/application.html.erb.erb',
+        'app/views/layouts/application.html.erb',
+        force: true
+    end
+
+    def set_up_assets
+      # css
       template_file = 'app/assets/stylesheets/application.css.scss.erb'
       file          = template_file.gsub('.erb', '')
       remove_file file.gsub('.scss', '')
 
       copy_file template_file, file
 
-      # zurb js
+      # js
       template_file = 'app/assets/javascripts/application.js.erb'
       file          = template_file.gsub('.erb', '')
       remove_file file.gsub('.scss', '')
 
       copy_file template_file, file
-
-      # application layout
-      template 'app/views/layouts/application.html.erb.erb',
-        'app/views/layouts/application.html.erb',
-        force: true
     end
   end
 end
