@@ -206,8 +206,8 @@ RUBY
 
     def copy_locale_files
       remove_file 'config/locales/en.yml'
-
       copy_dir 'config/locales'
+      copy_file 'config/locales/en.yml.erb', 'config/locales/en.yml', force: true
     end
 
     def install_zurb_fundation

@@ -57,6 +57,7 @@ module Koine
 
       def copy_locale_files
         build :copy_locale_files
+        copy_dir 'config/locales'
       end
 
       def set_up_test_environment
