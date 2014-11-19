@@ -31,5 +31,6 @@ koine-appgenerator is a custom rails app generator
 
   # s.add_development_dependency 'capybara'
   s.add_development_dependency 'minitest'
+  s.add_development_dependency "minitest-focus"
   s.add_development_dependency 'minitest-reporters'
 end

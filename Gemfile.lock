@@ -50,6 +50,8 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
     minitest (5.4.2)
+    minitest-focus (1.1.0)
+      minitest (>= 4, < 6)
     minitest-reporters (1.0.7)
       ansi
       builder
@@ -107,5 +109,6 @@ DEPENDENCIES
   coveralls
   koine-appgenerator!
   minitest
+  minitest-focus
   minitest-reporters
   simplecov
