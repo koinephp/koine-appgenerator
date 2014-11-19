@@ -54,6 +54,7 @@ module Koine
         invoke :copy_locale_files
         invoke :set_up_assets
         invoke :install_zurb_foundation
+        invoke :install_kaminari
       end
 
       def set_up_assets
@@ -126,6 +127,11 @@ module Koine
         gem 'foundation-rails'
 
         build :install_zurb_fundation
+      end
+
+      def install_kaminari
+        gem 'kaminari'
+        build :install_kaminari
       end
 
       protected

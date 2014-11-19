@@ -234,5 +234,9 @@ RUBY
 
       copy_file template_file, file
     end
+
+    def install_kaminari
+      generate "kaminari:views", "foundation", "-f"
+    end
   end
 end

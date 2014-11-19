@@ -199,6 +199,14 @@ module Koine
           /javascript_include_tag "vendor\/modernizr"/,
           /<meta name="viewport" content="width=device-width, initial-scale=1.0" \/>/
       end
+
+      focus
+      test "installs kaminari" do
+        run_generator
+
+        assert_gem "kaminari"
+        assert_file 'MyApp/app/views/kaminari/_paginator.html.erb', /pagination-centered/
+      end
     end
   end
 end
